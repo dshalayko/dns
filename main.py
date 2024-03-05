@@ -160,5 +160,8 @@ def buildresponse(data):
 
 while 1:
     data, addr = sock.recvfrom(512)
-    r = buildresponse(data)
-    sock.sendto(r, addr)
+    try:
+        r = buildresponse(data)
+        sock.sendto(r, addr)
+    except Exception:
+        print(data)
